@@ -28,8 +28,8 @@ class UserTableSeeder extends Seeder
 
         $image = [
             'image/users/user1.png',
-            'image/users/user2.png',
-            'image/users/user3.png', 
+            'image/users/user2.jpeg',
+            'image/users/user3.jpeg', 
         ];
 
         for($i = 0; $i < count($nomiUtenti); $i++) {

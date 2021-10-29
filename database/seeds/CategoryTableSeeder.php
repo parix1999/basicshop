@@ -14,12 +14,15 @@ class CategoryTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         $categories = [
-            'sport',
-            'tecnologia',
-            'video giochi',
-            'giochi',
-            'utensili',
-            'attrezzi'
+            'sport', // 1
+            'tecnologia', // 2
+            'video giochi', // 3
+            'giochi', // 4
+            'utensili', // 5
+            'attrezzi', // 6
+            'auto', // 7
+            'moto', // 8
+            'protezioni' // 9
         ];
 
         foreach($categories as $category) {

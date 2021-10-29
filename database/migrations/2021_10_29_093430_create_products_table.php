@@ -23,6 +23,9 @@ class CreateProductsTable extends Migration
             // FK category
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
+
+            $table->text('description');
+            $table->double('price', 8, 2);
             $table->timestamps();
         });
     }
