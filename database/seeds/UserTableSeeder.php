@@ -26,6 +26,12 @@ class UserTableSeeder extends Seeder
             'via Enrico Fermi',
         ];
 
+        $image = [
+            'image/users/user1.png',
+            'image/users/user2.png',
+            'image/users/user3.png', 
+        ];
+
         for($i = 0; $i < count($nomiUtenti); $i++) {
             // Nuovo oggetto:
             $nuovoUtente = new User();
@@ -33,6 +39,7 @@ class UserTableSeeder extends Seeder
             $nuovoUtente->email = $faker->email();
             $nuovoUtente->password = $faker->password(); 
             $nuovoUtente->address = $indirizzi[$i]; 
+            $nuovoUtente->picture = $image[$i]; 
             $nuovoUtente->save(); 
         }
         
