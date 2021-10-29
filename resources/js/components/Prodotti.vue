@@ -17,7 +17,8 @@
         },
         created() {
             axios.get('http://127.0.0.1:8000/api/products').then((response) => {
-                this.products = response.data;
+                this.products = response.data.data;
+                console.log(this.products);
             });
         }
     }

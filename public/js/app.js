@@ -1938,6 +1938,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Card',
   props: {
@@ -1979,7 +1988,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('http://127.0.0.1:8000/api/products').then(function (response) {
-      _this.products = response.data;
+      _this.products = response.data.data;
+      console.log(_this.products);
     });
   }
 });
@@ -37577,8 +37587,8 @@ var render = function () {
     { staticClass: "row" },
     _vm._l(_vm.products, function (prodotto) {
       return _c("div", { key: prodotto.id, staticClass: "col-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-4" }, [
+        _c("div", { staticClass: "row justify-content-space-between" }, [
+          _c("div", { staticClass: "col-12 col-sm-12 col-md-6 col-lg-4" }, [
             _c("div", { staticClass: "box-image" }, [
               _c("img", {
                 attrs: { src: "storage/" + prodotto.picture, alt: "" },
@@ -37586,7 +37596,7 @@ var render = function () {
             ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-4" }, [
+          _c("div", { staticClass: "col-6 col-sm-6 col-md-6 col-lg-4" }, [
             _c("div", { staticClass: "descrizione" }, [
               _vm._v(
                 "\n                        " +
@@ -37594,14 +37604,41 @@ var render = function () {
                   "\n                    "
               ),
             ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "dati-utente" },
+              [
+                _vm._l(prodotto.user, function (user) {
+                  return _c("div", { key: user.id }, [
+                    _vm._v(
+                      "\n                            Inserzione inserita da: " +
+                        _vm._s(user.name) +
+                        "\n                        "
+                    ),
+                  ])
+                }),
+                _vm._v(" "),
+                _vm._l(prodotto.category, function (category) {
+                  return _c("div", { key: category.id }, [
+                    _vm._v(
+                      "\n                            Categoria: " +
+                        _vm._s(category.name) +
+                        "\n                        "
+                    ),
+                  ])
+                }),
+              ],
+              2
+            ),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-4" }, [
+          _c("div", { staticClass: "col-6 col-sm-6 col-md-12 col-lg-4" }, [
             _c("div", { staticClass: "price" }, [
               _vm._v(
                 "\n                        " +
                   _vm._s(prodotto.price) +
-                  "\n                    "
+                  " €\n                    "
               ),
             ]),
           ]),
