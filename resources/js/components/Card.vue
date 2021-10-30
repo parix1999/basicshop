@@ -2,14 +2,14 @@
     <div class="row">
         
             <div v-for="prodotto in products" :key="prodotto.id" class="col-12">
-                <div class="row justify-content-space-between">
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="box-image">
                             <img :src="`storage/${prodotto.picture}`" alt="">
                         </div>
                     </div>
 
-                    <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="descrizione">
                             {{ prodotto.description }}
                         </div>
@@ -24,8 +24,9 @@
                         </div>
                     </div>
 
-                    <div class="col-6 col-sm-6 col-md-12 col-lg-4">
+                    <div class="col-6 col-sm-6 col-md-12 col-lg-12">
                         <div class="price">
+                            <div>{{ prodotto.name }}</div>
                             {{ prodotto.price }} €
                         </div>
                     </div>

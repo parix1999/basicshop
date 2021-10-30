@@ -1,13 +1,24 @@
 <template>
-    <Card :products="products"/>
+    <div>
+        <div class="row">
+            <div class="col-8">
+                <Card :products="products"/>
+            </div>
+            <div class="col-4">
+                <Carrello />
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
     import Card from './Card.vue';
+    import Carrello from './Carrello.vue';
 
     export default {
         components: { 
             Card, 
+            Carrello,
         },
         name:'Prodotti',
         data() {

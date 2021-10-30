@@ -12,6 +12,12 @@
      object-fit: cover;
 }
 
+.carrello {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+}
+
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
