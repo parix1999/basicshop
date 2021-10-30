@@ -1,6 +1,20 @@
 <template>
     <div class="carrello">
-        sono il carello
+        <h3>Carrello</h3>
+        <div class="dati-item">
+            <div class="nome-prodotto">
+                ps4
+            </div>
+            <div class="prezzo">
+                300 €
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="total-price">
+            300 €
+        </div>
     </div>
 </template>
 

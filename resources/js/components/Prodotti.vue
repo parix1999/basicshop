@@ -2,7 +2,10 @@
     <div>
         <div class="row">
             <div class="col-8">
-                <Card :products="products"/>
+                <Card :products="products"
+                :productId="productId"
+                @add="itemsAdd"
+                />
             </div>
             <div class="col-4">
                 <Carrello />
@@ -21,16 +24,28 @@
             Carrello,
         },
         name:'Prodotti',
+
         data() {
             return {
                 products: [],
+                addItems:[],
+                productId:null, 
             }
         },
+
         created() {
             axios.get('http://127.0.0.1:8000/api/products').then((response) => {
                 this.products = response.data.data;
                 console.log(this.products);
             });
-        }
+        },
+
+        methods: {
+            itemsAdd() {
+                axios.get(`http://127.0.0.1:8000/api/products/1`).then((response) => {
+                    this.addItems = response.data; 
+                });
+            }
+        },
     }
 </script>

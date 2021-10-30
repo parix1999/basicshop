@@ -49,11 +49,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        // Restituisco l'id del prodotto:
+        return response()->json($product); 
     }
-
     /**
      * Show the form for editing the specified resource.
      *

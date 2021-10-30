@@ -1,5 +1,10 @@
 .carrello {
     position: -webkit-sticky;
     position: sticky;
-    top:10px;
+    top:50px;
+    padding:0 30px;
+    .dati-item {
+        display: flex;
+        justify-content: space-between;
+    }
 }

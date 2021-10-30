@@ -1948,10 +1948,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Card',
   props: {
-    products: Array
+    products: Array,
+    productId: Number
   },
   data: function data() {
     return {};
@@ -1969,6 +1977,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2008,6 +2030,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2018,7 +2043,9 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Prodotti',
   data: function data() {
     return {
-      products: []
+      products: [],
+      addItems: [],
+      productId: null
     };
   },
   created: function created() {
@@ -2028,6 +2055,15 @@ __webpack_require__.r(__webpack_exports__);
       _this.products = response.data.data;
       console.log(_this.products);
     });
+  },
+  methods: {
+    itemsAdd: function itemsAdd() {
+      var _this2 = this;
+
+      axios.get("http://127.0.0.1:8000/api/products/1").then(function (response) {
+        _this2.addItems = response.data;
+      });
+    }
   }
 });
 
@@ -37656,6 +37692,25 @@ var render = function () {
                   ])
                 }),
                 _vm._v(" "),
+                _c("div", { staticClass: "buy" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info",
+                      on: {
+                        click: function ($event) {
+                          return _vm.$emit("add", _vm.productId)
+                        },
+                      },
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Aggiungi al Carrello\n                            "
+                      ),
+                    ]
+                  ),
+                ]),
+                _vm._v(" "),
                 _vm._l(prodotto.category, function (category) {
                   return _c("div", { key: category.id }, [
                     _vm._v(
@@ -37708,11 +37763,34 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "carrello" }, [
-    _vm._v("\n    sono il carello\n"),
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "carrello" }, [
+      _c("h3", [_vm._v("Carrello")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "dati-item" }, [
+        _c("div", { staticClass: "nome-prodotto" }, [
+          _vm._v("\n            ps4\n        "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "prezzo" }, [
+          _vm._v("\n            300 €\n        "),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", { staticClass: "total-price" }, [
+        _vm._v("\n        300 €\n    "),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -37739,7 +37817,12 @@ var render = function () {
       _c(
         "div",
         { staticClass: "col-8" },
-        [_c("Card", { attrs: { products: _vm.products } })],
+        [
+          _c("Card", {
+            attrs: { products: _vm.products, productId: _vm.productId },
+            on: { add: _vm.itemsAdd },
+          }),
+        ],
         1
       ),
       _vm._v(" "),

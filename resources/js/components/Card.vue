@@ -18,6 +18,13 @@
                             <div v-for="user in prodotto.user" :key="user.id">
                                 Inserzione inserita da: {{ user.name }}
                             </div>
+
+                            <div class="buy">
+                                <button class="btn btn-info" @click="$emit('add', productId)" >
+                                    Aggiungi al Carrello
+                                </button>
+                            </div>
+
                             <div v-for="category in prodotto.category" :key="category.id">
                                 Categoria: {{ category.name }}
                             </div>
@@ -43,13 +50,14 @@
         name:'Card',
         props: {
             products: Array, 
+            productId: Number, 
         },
         data() {
             return {
-              
+            
             }
         },
-        
+       
 
     }
 </script>
