@@ -29,7 +29,6 @@
             return {
                 products: [],
                 addItems:[],
-                productId:null, 
             }
         },
 
@@ -41,8 +40,8 @@
         },
 
         methods: {
-            itemsAdd() {
-                axios.get(`http://127.0.0.1:8000/api/products/1`).then((response) => {
+            itemsAdd(productId) {
+                axios.get(`http://127.0.0.1:8000/api/products/${productId}`).then((response) => {
                     this.addItems = response.data; 
                 });
             }

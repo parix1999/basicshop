@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         
-            <div v-for="prodotto in products" :key="prodotto.id" class="col-12">
+            <div v-for="(prodotto, index) in products" :key="index" class="col-12">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="box-image">
@@ -20,7 +20,7 @@
                             </div>
 
                             <div class="buy">
-                                <button class="btn btn-info" @click="$emit('add', productId)" >
+                                <button class="btn btn-info" @click="$emit('add', prodotto.id)" >
                                     Aggiungi al Carrello
                                 </button>
                             </div>
@@ -50,7 +50,6 @@
         name:'Card',
         props: {
             products: Array, 
-            productId: Number, 
         },
         data() {
             return {

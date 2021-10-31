@@ -1958,8 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Card',
   props: {
-    products: Array,
-    productId: Number
+    products: Array
   },
   data: function data() {
     return {};
@@ -2044,8 +2043,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       products: [],
-      addItems: [],
-      productId: null
+      addItems: []
     };
   },
   created: function created() {
@@ -2057,10 +2055,10 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    itemsAdd: function itemsAdd() {
+    itemsAdd: function itemsAdd(productId) {
       var _this2 = this;
 
-      axios.get("http://127.0.0.1:8000/api/products/1").then(function (response) {
+      axios.get("http://127.0.0.1:8000/api/products/".concat(productId)).then(function (response) {
         _this2.addItems = response.data;
       });
     }
@@ -37658,8 +37656,8 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "row" },
-    _vm._l(_vm.products, function (prodotto) {
-      return _c("div", { key: prodotto.id, staticClass: "col-12" }, [
+    _vm._l(_vm.products, function (prodotto, index) {
+      return _c("div", { key: index, staticClass: "col-12" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-12 col-sm-12 col-md-6 col-lg-6" }, [
             _c("div", { staticClass: "box-image" }, [
@@ -37699,7 +37697,7 @@ var render = function () {
                       staticClass: "btn btn-info",
                       on: {
                         click: function ($event) {
-                          return _vm.$emit("add", _vm.productId)
+                          return _vm.$emit("add", prodotto.id)
                         },
                       },
                     },
