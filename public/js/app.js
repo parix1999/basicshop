@@ -1996,10 +1996,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Carrello',
   props: {
-    cart: Array
+    cart: Array,
+    totalPrice: Number
   },
   data: function data() {
     return {};
@@ -2019,6 +2022,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Card_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Card.vue */ "./resources/js/components/Card.vue");
 /* harmony import */ var _Carrello_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Carrello.vue */ "./resources/js/components/Carrello.vue");
+//
+//
 //
 //
 //
@@ -2055,6 +2060,20 @@ __webpack_require__.r(__webpack_exports__);
       _this.products = response.data.data;
       console.log(_this.products);
     });
+  },
+  computed: {
+    // Questa funzione la passa come prop anche senza la specifica del data: 
+    totalPrice: function totalPrice() {
+      var total = 0;
+
+      if (this.cart.length > 0) {
+        this.cart.forEach(function (product) {
+          total += product.price;
+        });
+      }
+
+      return total;
+    }
   },
   methods: {
     itemsAdd: function itemsAdd(productId) {
@@ -37770,14 +37789,16 @@ var render = function () {
     [
       _c("h3", [_vm._v("Carrello")]),
       _vm._v(" "),
+      _c("div", { staticClass: "sottotitolo" }, [_vm._v("Items:")]),
+      _vm._v(" "),
       _vm._l(_vm.cart, function (datiItem, index) {
         return _c("div", { key: index, staticClass: "dati-item" }, [
           _c("div", { staticClass: "nome-prodotto" }, [
-            _vm._v("\n            " + _vm._s(datiItem) + "\n        "),
+            _vm._v("\n            " + _vm._s(datiItem.name) + "\n        "),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "prezzo" }, [
-            _vm._v("\n            300 €\n        "),
+            _vm._v("\n            " + _vm._s(datiItem.price) + " €\n        "),
           ]),
         ])
       }),
@@ -37785,7 +37806,9 @@ var render = function () {
       _c("hr"),
       _vm._v(" "),
       _c("div", { staticClass: "total-price" }, [
-        _vm._v("\n        300 €\n    "),
+        _c("div", { staticClass: "text" }, [_vm._v("Totale")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "total" }, [_vm._v(_vm._s(_vm.totalPrice))]),
       ]),
     ],
     2
@@ -37830,7 +37853,11 @@ var render = function () {
       _c(
         "div",
         { staticClass: "col-4" },
-        [_c("Carrello", { attrs: { cart: _vm.cart } })],
+        [
+          _c("Carrello", {
+            attrs: { cart: _vm.cart, totalPrice: _vm.totalPrice },
+          }),
+        ],
         1
       ),
     ]),
