@@ -1998,6 +1998,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Carrello',
+  props: {
+    cart: Array
+  },
   data: function data() {
     return {};
   }
@@ -2031,7 +2034,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2043,7 +2045,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       products: [],
-      addItems: []
+      cart: []
     };
   },
   created: function created() {
@@ -2059,7 +2061,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("http://127.0.0.1:8000/api/products/".concat(productId)).then(function (response) {
-        _this2.addItems = response.data;
+        // Da errore ma funziona: 
+        _this2.cart.push(response.data);
       });
     }
   }
@@ -37761,34 +37764,34 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "carrello" }, [
+  return _c(
+    "div",
+    { staticClass: "carrello" },
+    [
       _c("h3", [_vm._v("Carrello")]),
       _vm._v(" "),
-      _c("div", { staticClass: "dati-item" }, [
-        _c("div", { staticClass: "nome-prodotto" }, [
-          _vm._v("\n            ps4\n        "),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "prezzo" }, [
-          _vm._v("\n            300 €\n        "),
-        ]),
-      ]),
+      _vm._l(_vm.cart, function (datiItem, index) {
+        return _c("div", { key: index, staticClass: "dati-item" }, [
+          _c("div", { staticClass: "nome-prodotto" }, [
+            _vm._v("\n            " + _vm._s(datiItem) + "\n        "),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "prezzo" }, [
+            _vm._v("\n            300 €\n        "),
+          ]),
+        ])
+      }),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
       _c("div", { staticClass: "total-price" }, [
         _vm._v("\n        300 €\n    "),
       ]),
-    ])
-  },
-]
+    ],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37817,14 +37820,19 @@ var render = function () {
         { staticClass: "col-8" },
         [
           _c("Card", {
-            attrs: { products: _vm.products, productId: _vm.productId },
+            attrs: { products: _vm.products },
             on: { add: _vm.itemsAdd },
           }),
         ],
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-4" }, [_c("Carrello")], 1),
+      _c(
+        "div",
+        { staticClass: "col-4" },
+        [_c("Carrello", { attrs: { cart: _vm.cart } })],
+        1
+      ),
     ]),
   ])
 }

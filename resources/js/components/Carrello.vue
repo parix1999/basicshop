@@ -1,9 +1,9 @@
 <template>
     <div class="carrello">
         <h3>Carrello</h3>
-        <div class="dati-item">
+        <div v-for="(datiItem, index) in cart" :key="index" class="dati-item">
             <div class="nome-prodotto">
-                ps4
+                {{ datiItem }}
             </div>
             <div class="prezzo">
                 300 €
@@ -19,9 +19,11 @@
 </template>
 
 <script>
-
     export default {
         name:'Carrello',
+        props: {
+            cart: Array, 
+        },
         data() {
             return {
                 

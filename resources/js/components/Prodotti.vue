@@ -3,12 +3,11 @@
         <div class="row">
             <div class="col-8">
                 <Card :products="products"
-                :productId="productId"
                 @add="itemsAdd"
                 />
             </div>
             <div class="col-4">
-                <Carrello />
+                <Carrello :cart="cart"/>
             </div>
         </div>
     </div>
@@ -28,7 +27,7 @@
         data() {
             return {
                 products: [],
-                addItems:[],
+                cart:[],
             }
         },
 
@@ -42,7 +41,8 @@
         methods: {
             itemsAdd(productId) {
                 axios.get(`http://127.0.0.1:8000/api/products/${productId}`).then((response) => {
-                    this.addItems = response.data; 
+                    // Da errore ma funziona: 
+                    this.cart.push(response.data); 
                 });
             }
         },
