@@ -8,7 +8,7 @@
                     <h1 class="font-header title-form">Carica la nuova foto del prodotto</h1>
                     <form
                         method="POST"
-                        action="{{ route('product.updateImg', $product) }}"
+                        action="{{ route('products.updateImg', $product) }}"
                         enctype="multipart/form-data"
                     >
                         @csrf @method('PUT')

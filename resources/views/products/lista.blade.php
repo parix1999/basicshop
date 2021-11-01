@@ -6,7 +6,8 @@
         <div class="row">
             @foreach($queryLista as $prodotto)
                 <div class="mt-2 col-6 col-sm-6 col-md-4 col-lg-4">
-                    <div class="altezza">
+                    <div>
+                        <a href="{{ route('products.editImg', $prodotto->id) }}">Modifica immagine</a>
                         <div class="img-box">
                             <img src="{{ asset('storage/' . $prodotto->picture) }}" alt="foto prodotto">
                         </div>

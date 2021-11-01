@@ -91,7 +91,7 @@ class ProductController extends Controller
     public function editImg(Product $product) {
         $userId = Auth::id();
         if ($userId === $product->user_id) {
-            return view('products.editImag', compact('product'));
+            return view('products.editImg', compact('product'));
         } else {
             return view('products.error');
         }
@@ -126,7 +126,7 @@ class ProductController extends Controller
         $imgPath = Storage::put('uploadsEdit', $data['filePic']);
         $product->picture = $imgPath; 
         $product->save();
-        return redirect()->route('products.lista', $product);
+        return redirect()->route('product.index', $product);
         
     }
 
