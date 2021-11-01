@@ -15,7 +15,7 @@
 
         <div class="total-price">
             <div class="text">Totale</div>
-            <div class="total">{{ totalPrice }}</div>
+            <div class="total">{{ totalPrice }} €</div>
         </div>
     </div>
 </template>
@@ -32,6 +32,7 @@
                 
             }
         },
+        
         
     }
 </script>

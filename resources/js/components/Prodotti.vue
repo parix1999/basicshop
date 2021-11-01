@@ -56,8 +56,21 @@
         methods: {
             itemsAdd(productId) {
                 axios.get(`http://127.0.0.1:8000/api/products/${productId}`).then((response) => {
-                    // Da errore ma funziona: 
-                    this.cart.push(response.data); 
+                    this.cart.push(response.data);
+
+                    // ToDo da fare il controllo se si mette lo stesso prodotto nel carrello 
+
+                    // this.cart.forEach((element)=>{
+                    //     console.log(element.id)
+                    //     console.log(response.data.id);
+                        
+                    //     if(element.id == response.data.id) {
+                    //         alert('due id uguali')
+                    //     } 
+                    // });
+                        
+                    
+            
                 });
             },
         },

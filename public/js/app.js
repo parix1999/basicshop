@@ -2080,8 +2080,15 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("http://127.0.0.1:8000/api/products/".concat(productId)).then(function (response) {
-        // Da errore ma funziona: 
-        _this2.cart.push(response.data);
+        _this2.cart.push(response.data); // ToDo da fare il controllo se si mette lo stesso prodotto nel carrello 
+        // this.cart.forEach((element)=>{
+        //     console.log(element.id)
+        //     console.log(response.data.id);
+        //     if(element.id == response.data.id) {
+        //         alert('due id uguali')
+        //     } 
+        // });
+
       });
     }
   }
@@ -37808,7 +37815,9 @@ var render = function () {
       _c("div", { staticClass: "total-price" }, [
         _c("div", { staticClass: "text" }, [_vm._v("Totale")]),
         _vm._v(" "),
-        _c("div", { staticClass: "total" }, [_vm._v(_vm._s(_vm.totalPrice))]),
+        _c("div", { staticClass: "total" }, [
+          _vm._v(_vm._s(_vm.totalPrice) + " €"),
+        ]),
       ]),
     ],
     2
