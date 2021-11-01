@@ -1948,13 +1948,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Card',
   props: {
@@ -2027,6 +2020,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Card_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Card.vue */ "./resources/js/components/Card.vue");
 /* harmony import */ var _Carrello_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Carrello.vue */ "./resources/js/components/Carrello.vue");
+//
+//
 //
 //
 //
@@ -37697,23 +37692,30 @@ var render = function () {
     "div",
     { staticClass: "row" },
     _vm._l(_vm.products, function (prodotto, index) {
-      return _c("div", { key: index, staticClass: "col-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-sm-12 col-md-6 col-lg-6" }, [
+      return _c(
+        "div",
+        { key: index, staticClass: "col-12 col-sm-12 col-md-6 col-lg-6" },
+        [
+          _c("div", { staticClass: "card p-4 personalizzazione" }, [
             _c("div", { staticClass: "box-image" }, [
               _c("img", {
                 attrs: { src: "storage/" + prodotto.picture, alt: "" },
               }),
             ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-sm-6 col-md-6 col-lg-6" }, [
+            _vm._v(" "),
+            _c("div", { staticClass: "name" }, [
+              _c("div", [_vm._v(_vm._s(prodotto.name))]),
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "descrizione" }, [
               _vm._v(
-                "\n                        " +
+                "\n                " +
                   _vm._s(prodotto.description) +
-                  "\n                    "
+                  "\n                "
               ),
+              _c("div", { staticClass: "price" }, [
+                _vm._v(_vm._s(prodotto.price) + " €"),
+              ]),
             ]),
             _vm._v(" "),
             _c(
@@ -37723,9 +37725,9 @@ var render = function () {
                 _vm._l(prodotto.user, function (user) {
                   return _c("div", { key: user.id }, [
                     _vm._v(
-                      "\n                            Inserzione inserita da: " +
+                      "\n                    Inserzione inserita da: " +
                         _vm._s(user.name) +
-                        "\n                        "
+                        "\n                "
                     ),
                   ])
                 }),
@@ -37743,7 +37745,7 @@ var render = function () {
                     },
                     [
                       _vm._v(
-                        "\n                                Aggiungi al Carrello\n                            "
+                        "\n                        Aggiungi al Carrello\n                    "
                       ),
                     ]
                   ),
@@ -37752,9 +37754,9 @@ var render = function () {
                 _vm._l(prodotto.category, function (category) {
                   return _c("div", { key: category.id }, [
                     _vm._v(
-                      "\n                            Categoria: " +
+                      "\n                    Categoria: " +
                         _vm._s(category.name) +
-                        "\n                        "
+                        "\n                "
                     ),
                   ])
                 }),
@@ -37762,19 +37764,8 @@ var render = function () {
               2
             ),
           ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-sm-6 col-md-12 col-lg-12" }, [
-            _c("div", { staticClass: "price" }, [
-              _c("div", [_vm._v(_vm._s(prodotto.name))]),
-              _vm._v(
-                "\n                        " +
-                  _vm._s(prodotto.price) +
-                  " €\n                    "
-              ),
-            ]),
-          ]),
-        ]),
-      ])
+        ]
+      )
     }),
     0
   )
@@ -37893,7 +37884,11 @@ var render = function () {
             ],
             1
           )
-        : _c("div"),
+        : _c("div", [
+            _c("div", { staticClass: "intro-cart" }, [
+              _vm._v("Aggiungi tutti i prodotti che vuoi !!"),
+            ]),
+          ]),
     ]),
   ])
 }

@@ -3043,6 +3043,10 @@
   clip: auto;
 }
 
+.personalizzazione {
+  height: 600px;
+}
+
 .box-image {
   width: 300px;
   height: 300px;
@@ -3093,6 +3097,12 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
+}
+
+.intro-cart {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
 }
 
 .img-box {

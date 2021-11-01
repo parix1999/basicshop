@@ -13,7 +13,9 @@
                 />
             </div>
             
-            <div v-else></div>
+            <div v-else>
+                <div class="intro-cart">Aggiungi tutti i prodotti che vuoi !!</div>
+            </div>
         </div>
     </div>
 </template>
