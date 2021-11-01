@@ -7,7 +7,10 @@
                 {{ datiItem.name }}
             </div>
             <div class="prezzo">
-                {{ datiItem.price }} €
+                {{ datiItem.price }} € 
+            </div>
+            <div class="ml-3 icon">
+                <i class="bi bi-backspace" @click="$emit('delete', index)"></i> 
             </div>
         </div>
 
@@ -15,7 +18,9 @@
 
         <div class="total-price">
             <div class="text">Totale</div>
-            <div class="total">{{ totalPrice }} €</div>
+            <div class="total">
+                {{ totalPrice }}  
+            €</div>
         </div>
     </div>
 </template>

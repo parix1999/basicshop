@@ -1998,6 +1998,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Carrello',
   props: {
@@ -2022,6 +2027,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Card_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Card.vue */ "./resources/js/components/Card.vue");
 /* harmony import */ var _Carrello_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Carrello.vue */ "./resources/js/components/Carrello.vue");
+//
+//
+//
 //
 //
 //
@@ -2090,6 +2098,9 @@ __webpack_require__.r(__webpack_exports__);
         // });
 
       });
+    },
+    cancellazione: function cancellazione(index) {
+      this.cart.splice(index, 1);
     }
   }
 });
@@ -37805,7 +37816,18 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "prezzo" }, [
-            _vm._v("\n            " + _vm._s(datiItem.price) + " €\n        "),
+            _vm._v("\n            " + _vm._s(datiItem.price) + " € \n        "),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ml-3 icon" }, [
+            _c("i", {
+              staticClass: "bi bi-backspace",
+              on: {
+                click: function ($event) {
+                  return _vm.$emit("delete", index)
+                },
+              },
+            }),
           ]),
         ])
       }),
@@ -37816,7 +37838,7 @@ var render = function () {
         _c("div", { staticClass: "text" }, [_vm._v("Totale")]),
         _vm._v(" "),
         _c("div", { staticClass: "total" }, [
-          _vm._v(_vm._s(_vm.totalPrice) + " €"),
+          _vm._v("\n            " + _vm._s(_vm.totalPrice) + "  \n        €"),
         ]),
       ]),
     ],
@@ -37859,16 +37881,19 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-4" },
-        [
-          _c("Carrello", {
-            attrs: { cart: _vm.cart, totalPrice: _vm.totalPrice },
-          }),
-        ],
-        1
-      ),
+      _vm.cart.length > 0
+        ? _c(
+            "div",
+            { staticClass: "col-4" },
+            [
+              _c("Carrello", {
+                attrs: { cart: _vm.cart, totalPrice: _vm.totalPrice },
+                on: { delete: _vm.cancellazione },
+              }),
+            ],
+            1
+          )
+        : _c("div"),
     ]),
   ])
 }

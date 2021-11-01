@@ -6,11 +6,14 @@
                 @add="itemsAdd"
                 />
             </div>
-            <div class="col-4">
+            <div v-if="cart.length > 0" class="col-4">
                 <Carrello :cart="cart"
                 :totalPrice="totalPrice"
+                @delete="cancellazione"
                 />
             </div>
+            
+            <div v-else></div>
         </div>
     </div>
 </template>
@@ -68,11 +71,15 @@
                     //         alert('due id uguali')
                     //     } 
                     // });
-                        
-                    
-            
                 });
             },
+
+            cancellazione(index) {
+                this.cart.splice(index, 1);
+            }
+
+
+
         },
     }
 </script>
