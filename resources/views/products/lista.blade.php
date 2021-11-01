@@ -19,7 +19,7 @@
                             {{ $prodotto->price }} €
                         </div>
         
-                        <a href="#" class="mt-3">
+                        <a href="{{ route('product.edit', $prodotto->id) }}" class="mt-3">
                             <button class="btn btn-primary">Modifica</button>
                         </a>
                     </div>

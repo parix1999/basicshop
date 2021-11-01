@@ -75,11 +75,28 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
-    }
+        // Per la modifica dei prodotti:
+        $categories = Category::all();
+        $userId = Auth::id();
+        if ($userId === $product->user_id) {
+            return view('products.edit', compact('product', 'categories')); 
+        } else {
+            return view('products.error');
+        }
 
+    }
+    // Funzione per la modifica dell'immagine prodotto:
+    public function editImg(Product $product) {
+        $userId = Auth::id();
+        if ($userId === $product->user_id) {
+            return view('products.editImag', compact('product'));
+        } else {
+            return view('products.error');
+        }
+    }
+    
     /**
      * Update the specified resource in storage.
      *
@@ -87,9 +104,30 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        // salvataggio dei nuovi:
+        $data = $request->all();
+
+        $product->name = $data['name'];
+        $product->price = $data['price']; 
+        $product->description = $data['description'];
+        $product->category_id = $data['category'];
+        $product->user_id = Auth::id();
+        
+        $product->save(); 
+
+        return redirect()->route('product.index', $product);
+    }
+
+    public function updateImg(Request $request, Product $product)
+    {
+        $data = $request->all();
+        $imgPath = Storage::put('uploadsEdit', $data['filePic']);
+        $product->picture = $imgPath; 
+        $product->save();
+        return redirect()->route('products.lista', $product);
+        
     }
 
     /**

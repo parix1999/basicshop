@@ -22,3 +22,5 @@ Auth::routes();
 // Rotte crud utente registrato:
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::resource('/product', 'ProductController');
+Route::get('product/img/{product}/edit', 'ProductController@editImg')->name('products.editImg');
+Route::put('product/img/{product}', 'ProductController@updateImg')->name('products.updateImg');
