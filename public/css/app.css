@@ -24,6 +24,22 @@
   justify-content: space-between;
 }
 
+.content-initial {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-initial .image-container {
+  width: 90px;
+  overflow: hidden;
+}
+
+.content-initial .image-container img {
+  width: 100%;
+  border-radius: 50%;
+}
+
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

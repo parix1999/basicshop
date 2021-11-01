@@ -19,4 +19,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Rotte crud utente registrato:
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

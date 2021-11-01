@@ -1,0 +1,13 @@
+.content-initial {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    .image-container {
+        width:90px;
+        overflow: hidden;
+        img {
+            width:100%;
+            border-radius: 50%;
+        }
+    }
+}
