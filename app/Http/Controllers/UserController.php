@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -54,9 +57,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        // Modifica dei dati utente
+        $userId = Auth::id();
+        if ($userId === $user->id) {
+            return view('auth.edit', compact('user')); 
+        } else {
+            return view('products.error');
+        }
+    }
+
+    // Rotta per la modifica dell'immagine:
+    public function editImg(User $user) {
+        $userId = Auth::id();
+        if ($userId === $user->id) {
+            return view('auth.editImg', compact('user')); 
+        } else {
+            return view('products.error');
+        }
     }
 
     /**
@@ -66,9 +85,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        // Aggiornamento e salvataggio della modifica:
+        // Validazioni:
+        $request->validate([
+            'name' => 'required|max:255',
+            'address' => 'required|max:150',
+        ]);
+        $data = $request->all();
+        $user->update($data); 
+        
+        return redirect()->route('dashboard');
+    
+    }
+
+    public function updateImg(Request $request, User $user) {
+        $data = $request->all();
+        $imgPath = Storage::put('utenteUploads', $data['filePic']);
+        $user->picture = $imgPath;
+        $user->save(); 
+        return redirect()->route('dashboard');
     }
 
     /**

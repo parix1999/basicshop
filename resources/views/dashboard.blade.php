@@ -9,6 +9,7 @@
                     <div>
                         <h1>{{ __('Dashboard') }}</h1>
                         <div>Benvenuto <strong>{{ $user->name }}</strong></div>
+                        <a href="{{ route('users.editImg', $user) }}">Modifica immagine utente</a>
                     </div>
                     <div class="image-container">
                         @if($user->picture != null)
@@ -17,6 +18,7 @@
                         <img src="storage/image/users/avatar.png" alt="predefinita">
                         @endif
                     </div>
+                    
                 </div>
 
                 <div class="card-body">
@@ -30,7 +32,9 @@
                     <h2>Gestisci i tuoi dati:</h2>
                     
                     <div class="dati-utente mt-2 mb-2">
-                        <button class="btn btn-dark">Modifica i dati utente</button>
+                        <a href="{{ route('user.edit', $user) }}">
+                            <button class="btn btn-dark">Modifica i dati utente</button>
+                        </a>
                     </div>
                     <div class="aggiunta mb-2">
                         <a href="{{ route('product.create') }}">
