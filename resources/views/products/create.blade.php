@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('product.store') }}" method="POST">
+    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="form-group">
             <label for="name">Nome prodotto:</label>
@@ -22,11 +22,34 @@
         <div class="form-group form-check">
             <select name="category" id="category">
                 @foreach($allCategories as $category)
-                    <option name="category" id="category">{{ $category->id }}</option>
+                    <option name="category" id="category" value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
-        
+
+        <div class="mb-5">
+            <div>
+                <label
+                    for="filePic"
+                    class="text-md-right"
+                >Seleziona un'immagine</label>
+                <input
+                    id="filePic"
+                    type="file"
+                    class="form-control @error('pictureFile') is-invalid @enderror"
+                    name="filePic"
+                    required
+                    autocomplete="filePic"
+                    autofocus
+                />
+                @error('pictureFile')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">Salva</button>
     </form>
 </div>

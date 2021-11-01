@@ -7,6 +7,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -109,6 +110,8 @@ class ProductController extends Controller
         $product->description = $data['description'];
         $product->category_id = $data['category'];
         $product->user_id = Auth::id();
+        $imgPath = Storage::put('img-products', $data['filePic']);
+        $product->picture = $imgPath; 
     
         $product->save(); 
     }
