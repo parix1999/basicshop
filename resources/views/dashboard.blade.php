@@ -33,7 +33,9 @@
                         <button class="btn btn-dark">Modifica i dati utente</button>
                     </div>
                     <div class="aggiunta mb-2">
-                        <button class="btn btn-dark">Aggiungi un prodotto</button>
+                        <a href="{{ route('product.create') }}">
+                            <button class="btn btn-dark">Aggiungi un prodotto</button>
+                        </a>
                     </div>
                     <div class="lista-prodotti">
                         <a href="{{ route('product.index') }}">

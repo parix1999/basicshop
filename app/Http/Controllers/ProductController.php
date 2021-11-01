@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +34,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        //Qui devo passare i dati per la creazione dove li passo anche la categoria:
+        $allCategories = Category::all();
+        return view('products.create', compact('allCategories')); 
     }
 
     /**
@@ -40,7 +47,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     
+        // Qui salvo i dati nuovi;
+        $data = $request->all();
+        $product = new Product();
+        $this->fillAndSaveProducts($product, $data);
+        return redirect()->route('product.index', $product->id);
+
+
     }
 
     /**
@@ -87,4 +101,16 @@ class ProductController extends Controller
     {
         //
     }
+
+
+    public function fillAndSaveProducts(Product $product, $data) {
+        $product->name = $data['name'];
+        $product->price = $data['price']; 
+        $product->description = $data['description'];
+        $product->category_id = $data['category'];
+        $product->user_id = Auth::id();
+    
+        $product->save(); 
+    }
+
 }
