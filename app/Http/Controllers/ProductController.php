@@ -110,9 +110,8 @@ class ProductController extends Controller
         $product->description = $data['description'];
         $product->category_id = $data['category'];
         $product->user_id = Auth::id();
-        $imgPath = Storage::put('img-products', $data['filePic']);
+        $imgPath = Storage::put('uploads', $data['filePic']);
         $product->picture = $imgPath; 
-    
         $product->save(); 
     }
 
