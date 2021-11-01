@@ -19,10 +19,24 @@
                         <div class="price mt-3">
                             {{ $prodotto->price }} €
                         </div>
-        
-                        <a href="{{ route('product.edit', $prodotto->id) }}" class="mt-3">
-                            <button class="btn btn-primary">Modifica</button>
-                        </a>
+
+                        <div class="bottoni">
+                            <div>
+                                <a href="{{ route('product.edit', $prodotto->id) }}" class="mt-3">
+                                    <button class="btn btn-primary">Modifica</button>
+                                </a>
+                            </div>
+
+                            <div>
+                                <form action="{{ route('product.destroy', $prodotto->id) }}" method="POST">
+                                @csrf @method('DELETE')
+                                    <a href="">
+                                        <button type="submit" class="btn btn-danger ml-5">Elimina</button>
+                                    </a>
+    
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
