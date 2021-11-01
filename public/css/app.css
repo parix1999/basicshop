@@ -3059,6 +3059,48 @@
      object-fit: cover;
 }
 
+@media all and (max-width: 1199px) {
+  .box-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .box-image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .box-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .box-image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+@media all and (max-width: 410px) {
+  .box-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .box-image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
 .carrello {
   position: -webkit-sticky;
   position: sticky;

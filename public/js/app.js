@@ -2063,6 +2063,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.products = response.data.data;
       console.log(_this.products);
     });
+    this.getLocalStore();
   },
   computed: {
     // Questa funzione la passa come prop anche senza la specifica del data: 
@@ -2096,7 +2097,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     cancellazione: function cancellazione(index) {
       this.cart.splice(index, 1);
-    }
+    } // getLocalStore() {
+    //     if (localStorage.getItem('cart')) {
+    //         try {
+    //             this.cats = JSON.parse(localStorage.getItem('cart'));
+    //         } catch(e) {
+    //         localStorage.removeItem('cart');
+    //         }
+    //     }
+    // }   
+
   }
 });
 
@@ -37862,7 +37872,7 @@ var render = function () {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-8" },
+        { staticClass: "col-12 col-sm-12 col-md-8 col-lg-8" },
         [
           _c("Card", {
             attrs: { products: _vm.products },
@@ -37875,7 +37885,7 @@ var render = function () {
       _vm.cart.length > 0
         ? _c(
             "div",
-            { staticClass: "col-4" },
+            { staticClass: "col-12 col-sm-12 col-md-4 col-lg-4" },
             [
               _c("Carrello", {
                 attrs: { cart: _vm.cart, totalPrice: _vm.totalPrice },

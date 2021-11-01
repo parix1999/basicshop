@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-8">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8">
                 <Card :products="products"
                 @add="itemsAdd"
                 />
             </div>
-            <div v-if="cart.length > 0" class="col-4">
+            <div v-if="cart.length > 0" class="col-12 col-sm-12 col-md-4 col-lg-4">
                 <Carrello :cart="cart"
                 :totalPrice="totalPrice"
                 @delete="cancellazione"
@@ -43,7 +43,10 @@
                 this.products = response.data.data;
                 console.log(this.products);
             });
+
+            this.getLocalStore();
         },
+        
 
         computed: {
             // Questa funzione la passa come prop anche senza la specifica del data: 
@@ -78,7 +81,17 @@
 
             cancellazione(index) {
                 this.cart.splice(index, 1);
-            }
+            },
+
+            // getLocalStore() {
+            //     if (localStorage.getItem('cart')) {
+            //         try {
+            //             this.cats = JSON.parse(localStorage.getItem('cart'));
+            //         } catch(e) {
+            //         localStorage.removeItem('cart');
+            //         }
+            //     }
+            // }   
 
 
 
