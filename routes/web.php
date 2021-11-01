@@ -21,3 +21,4 @@ Auth::routes();
 
 // Rotte crud utente registrato:
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::resource('/product', 'ProductController');

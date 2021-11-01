@@ -36,7 +36,9 @@
                         <button class="btn btn-dark">Aggiungi un prodotto</button>
                     </div>
                     <div class="lista-prodotti">
-                        <button class="btn btn-dark">Vedi lista prodotti</button>
+                        <a href="{{ route('product.index') }}">
+                            <button class="btn btn-dark">Vedi lista prodotti</button>
+                        </a>
                     </div>
 
 
