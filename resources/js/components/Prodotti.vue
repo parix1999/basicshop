@@ -37,7 +37,6 @@
                 cart:[],
             }
         },
-
         created() {
             axios.get('http://127.0.0.1:8000/api/products').then((response) => {
                 this.products = response.data.data;
@@ -46,6 +45,7 @@
 
            
         },
+
         computed:{
             totalPrice() {
                 let total = 0;
@@ -82,5 +82,21 @@
 
 
         },
+
+        mounted() {
+            // Prima controlla che ci sia qualcosa da salvare:
+            if(localStorage.cart) {
+                // Se ci sono, farà l'update del value:
+                this.cart = JSON.parse(localStorage.cart); 
+            }
+        },
+        watch: {
+            cart(newCart) {
+                // Sniped codice js che salva i data, lo storage accetta solo string
+                // si trasforma in stringa
+                localStorage.cart = JSON.stringify(newCart); 
+            }   
+        },
+        
     }
 </script>

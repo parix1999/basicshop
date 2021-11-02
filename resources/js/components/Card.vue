@@ -35,7 +35,7 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6" v-for="(prodotto, index) in products" :key="index">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6" v-for="(prodotto, index) in products" :key="index">
                 <div class="card" style="width: 18rem;">
                     <img :src="`storage/${prodotto.picture}`" alt="">
                     <div class="card-body">

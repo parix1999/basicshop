@@ -2120,6 +2120,20 @@ __webpack_require__.r(__webpack_exports__);
     cancellazione: function cancellazione(index) {
       this.cart.splice(index, 1);
     }
+  },
+  mounted: function mounted() {
+    // Prima controlla che ci sia qualcosa da salvare:
+    if (localStorage.cart) {
+      // Se ci sono, farà l'update del value:
+      this.cart = JSON.parse(localStorage.cart);
+    }
+  },
+  watch: {
+    cart: function cart(newCart) {
+      // Sniped codice js che salva i data, lo storage accetta solo string
+      // si trasforma in stringa
+      localStorage.cart = JSON.stringify(newCart);
+    }
   }
 });
 
@@ -37717,7 +37731,7 @@ var render = function () {
     _vm._l(_vm.products, function (prodotto, index) {
       return _c(
         "div",
-        { key: index, staticClass: "col-12 col-sm-12 col-md-6 col-lg-6" },
+        { key: index, staticClass: "col-12 col-sm-12 col-md-12 col-lg-6" },
         [
           _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
             _c("img", {
