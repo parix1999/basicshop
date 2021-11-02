@@ -18,6 +18,11 @@
             <label for="address">Indirizzo</label>
             <input type="address" class="form-control" id="address" name="address">
         </div>
+
+        <div class="form-group">
+            <label for="phone_number">Cellulare</label>
+            <input type="phone_number" class="form-control" id="phone_number" name="phone_number">
+        </div>
         
         <button type="submit" class="btn btn-primary">Salva</button>
     </form>

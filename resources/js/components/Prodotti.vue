@@ -14,7 +14,7 @@
             </div>
             
             <div v-else>
-                <div class="intro-cart">Aggiungi tutti i prodotti che vuoi !!</div>
+                <div class="intro-cart">Lista dei desideri!!</div>
             </div>
         </div>
     </div>
@@ -44,17 +44,14 @@
                 console.log(this.products);
             });
 
-            this.getLocalStore();
+           
         },
-        
-
-        computed: {
-            // Questa funzione la passa come prop anche senza la specifica del data: 
+        computed:{
             totalPrice() {
                 let total = 0;
-                if(this.cart.length > 0) {
-                    this.cart.forEach((product) => {
-                        total += product.price; 
+                if (this.cart.length > 0){
+                    this.cart.forEach((element) => {
+                        total += element.price;
                     });
                 }
                 return total; 
@@ -81,18 +78,7 @@
 
             cancellazione(index) {
                 this.cart.splice(index, 1);
-            },
-
-            // getLocalStore() {
-            //     if (localStorage.getItem('cart')) {
-            //         try {
-            //             this.cats = JSON.parse(localStorage.getItem('cart'));
-            //         } catch(e) {
-            //         localStorage.removeItem('cart');
-            //         }
-            //     }
-            // }   
-
+            },  
 
 
         },

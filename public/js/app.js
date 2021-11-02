@@ -1948,13 +1948,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Card',
   props: {
     products: Array
   },
   data: function data() {
-    return {};
+    return {
+      heartFlag: false
+    };
   }
 });
 
@@ -2063,16 +2087,14 @@ __webpack_require__.r(__webpack_exports__);
       _this.products = response.data.data;
       console.log(_this.products);
     });
-    this.getLocalStore();
   },
   computed: {
-    // Questa funzione la passa come prop anche senza la specifica del data: 
     totalPrice: function totalPrice() {
       var total = 0;
 
       if (this.cart.length > 0) {
-        this.cart.forEach(function (product) {
-          total += product.price;
+        this.cart.forEach(function (element) {
+          total += element.price;
         });
       }
 
@@ -2097,16 +2119,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     cancellazione: function cancellazione(index) {
       this.cart.splice(index, 1);
-    } // getLocalStore() {
-    //     if (localStorage.getItem('cart')) {
-    //         try {
-    //             this.cats = JSON.parse(localStorage.getItem('cart'));
-    //         } catch(e) {
-    //         localStorage.removeItem('cart');
-    //         }
-    //     }
-    // }   
-
+    }
   }
 });
 
@@ -37706,73 +37719,74 @@ var render = function () {
         "div",
         { key: index, staticClass: "col-12 col-sm-12 col-md-6 col-lg-6" },
         [
-          _c("div", { staticClass: "card p-4 personalizzazione" }, [
-            _c("div", { staticClass: "box-image" }, [
-              _c("img", {
-                attrs: { src: "storage/" + prodotto.picture, alt: "" },
-              }),
-            ]),
+          _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
+            _c("img", {
+              attrs: { src: "storage/" + prodotto.picture, alt: "" },
+            }),
             _vm._v(" "),
-            _c("div", { staticClass: "name" }, [
-              _c("div", [_vm._v(_vm._s(prodotto.name))]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "descrizione" }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(prodotto.description) +
-                  "\n                "
-              ),
-              _c("div", { staticClass: "price" }, [
-                _vm._v(_vm._s(prodotto.price) + " €"),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(_vm._s(prodotto.name)),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(_vm._s(prodotto.description)),
               ]),
             ]),
             _vm._v(" "),
             _c(
-              "div",
-              { staticClass: "dati-utente" },
+              "ul",
+              { staticClass: "list-group list-group-flush" },
               [
-                _vm._l(prodotto.user, function (user) {
-                  return _c("div", { key: user.id }, [
-                    _vm._v(
-                      "\n                    Inserzione inserita da: " +
-                        _vm._s(user.name) +
-                        "\n                "
-                    ),
-                  ])
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "buy" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-info",
-                      on: {
-                        click: function ($event) {
-                          return _vm.$emit("add", prodotto.id)
-                        },
-                      },
-                    },
-                    [
-                      _vm._v(
-                        "\n                        Aggiungi al Carrello\n                    "
-                      ),
-                    ]
-                  ),
-                ]),
-                _vm._v(" "),
                 _vm._l(prodotto.category, function (category) {
-                  return _c("div", { key: category.id }, [
-                    _vm._v(
-                      "\n                    Categoria: " +
-                        _vm._s(category.name) +
-                        "\n                "
-                    ),
-                  ])
+                  return _c(
+                    "li",
+                    { key: category.id, staticClass: "list-group-item" },
+                    [_vm._v("Categoria: " + _vm._s(category.name))]
+                  )
                 }),
+                _vm._v(" "),
+                _vm._l(prodotto.user, function (user) {
+                  return _c(
+                    "li",
+                    { key: user.id, staticClass: "list-group-item" },
+                    [_vm._v("Nome utente: " + _vm._s(user.name))]
+                  )
+                }),
+                _vm._v(" "),
+                _vm._l(prodotto.user, function (user) {
+                  return _c(
+                    "li",
+                    { key: user.id, staticClass: "list-group-item" },
+                    [_vm._v("Contatto: " + _vm._s(user.phone_number))]
+                  )
+                }),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Prezzo: " + _vm._s(prodotto.price)),
+                ]),
               ],
               2
             ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-success",
+                  on: {
+                    click: function ($event) {
+                      return _vm.$emit("add", prodotto.id)
+                    },
+                  },
+                },
+                [
+                  _vm._v(
+                    "\n                    Aggiungi ai Preferiti\n                "
+                  ),
+                ]
+              ),
+            ]),
           ]),
         ]
       )
@@ -37806,7 +37820,7 @@ var render = function () {
     "div",
     { staticClass: "carrello" },
     [
-      _c("h3", [_vm._v("Carrello")]),
+      _c("h3", [_vm._v("Preferiti")]),
       _vm._v(" "),
       _c("div", { staticClass: "sottotitolo" }, [_vm._v("Items:")]),
       _vm._v(" "),
@@ -37896,7 +37910,7 @@ var render = function () {
           )
         : _c("div", [
             _c("div", { staticClass: "intro-cart" }, [
-              _vm._v("Aggiungi tutti i prodotti che vuoi !!"),
+              _vm._v("Lista dei desideri!!"),
             ]),
           ]),
     ]),

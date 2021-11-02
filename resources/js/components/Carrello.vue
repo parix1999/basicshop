@@ -1,6 +1,6 @@
 <template>
     <div class="carrello">
-        <h3>Carrello</h3>
+        <h3>Preferiti</h3>
         <div class="sottotitolo">Items:</div>
         <div v-for="(datiItem, index) in cart" :key="index" class="dati-item">
             <div class="nome-prodotto">
